@@ -219,6 +219,8 @@ def administrar_chatbot(text,number, messageId, name):
     markRead = markRead_Message(messageId)
     list.append(markRead)
     time.sleep(2)
+    
+    
 
     if "hola" in text:
         body = "¡Hola! 👋 Bienvenido a Bigdateros. ¿Cómo podemos ayudarte hoy?"
