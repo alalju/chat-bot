@@ -221,9 +221,9 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        body = "¡Hola! 👋 Bienvenido a Bigdateros. ¿Cómo podemos ayudarte hoy?"
+        body = "¡Hola! 🤖 Bienvenido a la UNSIJ. ¿En que te podemos ayudar?"
         footer = "Equipo Bigdateros"
-        options = ["✅ servicios", "📅 agendar cita"]
+        options = ["🤔 ¿Qué es la UNSIJ?", "✅ Oferta educativa", "Misión y Visión", "📅 Fechas"]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
