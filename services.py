@@ -221,9 +221,9 @@ def administrar_chatbot(text,number, messageId, name):
     time.sleep(2)
 
     if "hola" in text:
-        body = "¡Hola! 🤖 Bienvenido a la UNSIJ. ¿En que te podemos ayudar?"
-        footer = "Equipo Bigdateros"
-        options = ["🤔 ¿Qué es la UNSIJ?", "✅ Oferta educativa", "Misión y Visión", "📅 Fechas"]
+        body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En que te podemos ayudar?"
+        footer = ""
+        options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
@@ -273,7 +273,7 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(listReply)
     elif "7 de junio, 2:00 pm" in text:
         body = "Excelente, has seleccionado la reunión para el 7 de junio a las 2:00 PM. Te enviaré un recordatorio un día antes. ¿Necesitas ayuda con algo más hoy?"
-        footer = "Equipo Bigdateros"
+        footer = "Equipo "
         options = ["✅ Sí, por favor", "❌ No, gracias."]
 
 
