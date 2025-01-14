@@ -229,7 +229,7 @@ def administrar_chatbot(text,number, messageId, name):
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
-    elif "servicios" in text:
+    elif "¿Qué es la UNSIJ?" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
         footer = "Equipo UNSIJ"
         options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
@@ -260,7 +260,7 @@ def administrar_chatbot(text,number, messageId, name):
 
         body = "¿Te gustaría programar una reunión con uno de nuestros especialistas para discutir estos servicios más a fondo?"
         footer = "Equipo UNSIJ"
-        options = ["✅ Sí, agenda reunión", "No, gracias." ]
+        options = ["✅ Sí, agenda reunión", "No, gracias."]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed4",messageId)
         list.append(replyButtonData)
