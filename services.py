@@ -222,7 +222,7 @@ def administrar_chatbot(text,number, messageId, name):
 
     if "hola" in text:
         body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En que te podemos ayudar?"
-        footer = ""
+        footer = "Equipo UNSIJ"
         options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed1",messageId)
@@ -231,7 +231,7 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(replyButtonData)
     elif "servicios" in text:
         body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
-        footer = "Equipo Bigdateros"
+        footer = "Equipo UNSIJ"
         options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
 
         listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
@@ -241,7 +241,7 @@ def administrar_chatbot(text,number, messageId, name):
         list.append(sticker)
     elif "inteligencia de negocio" in text:
         body = "Buenísima elección. ¿Te gustaría que te enviara un documento PDF con una introducción a nuestros métodos de Inteligencia de Negocio?"
-        footer = "Equipo Bigdateros"
+        footer = "Equipo UNSIJ"
         options = ["✅ Sí, envía el PDF.", "⛔ No, gracias"]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed3",messageId)
@@ -259,21 +259,21 @@ def administrar_chatbot(text,number, messageId, name):
         time.sleep(3)
 
         body = "¿Te gustaría programar una reunión con uno de nuestros especialistas para discutir estos servicios más a fondo?"
-        footer = "Equipo Bigdateros"
+        footer = "Equipo UNSIJ"
         options = ["✅ Sí, agenda reunión", "No, gracias." ]
 
         replyButtonData = buttonReply_Message(number, options, body, footer, "sed4",messageId)
         list.append(replyButtonData)
     elif "sí, agenda reunión" in text :
         body = "Estupendo. Por favor, selecciona una fecha y hora para la reunión:"
-        footer = "Equipo Bigdateros"
+        footer = "Equipo UNSIJ"
         options = ["📅 10: mañana 10:00 AM", "📅 7 de junio, 2:00 PM", "📅 8 de junio, 4:00 PM"]
 
         listReply = listReply_Message(number, options, body, footer, "sed5",messageId)
         list.append(listReply)
     elif "7 de junio, 2:00 pm" in text:
         body = "Excelente, has seleccionado la reunión para el 7 de junio a las 2:00 PM. Te enviaré un recordatorio un día antes. ¿Necesitas ayuda con algo más hoy?"
-        footer = "Equipo "
+        footer = "Equipo UNSIJ"
         options = ["✅ Sí, por favor", "❌ No, gracias."]
 
 
