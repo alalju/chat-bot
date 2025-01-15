@@ -380,6 +380,8 @@ def administrar_chatbot(text,number, messageId, name):
     for item in list:
         enviar_Mensaje_whatsapp(item)
 
+"""
+
 #al parecer para mexico, whatsapp agrega 521 como prefijo en lugar de 52,
 # este codigo soluciona ese inconveniente.
 def replace_start(s):
@@ -391,5 +393,3 @@ def replace_start(s):
     else:
         return s
         
-
-"""
