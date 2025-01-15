@@ -210,6 +210,97 @@ def markRead_Message(messageId):
         }
     )
     return data
+  
+  
+carreras = {
+    "Ingeniería en Sistemas": {
+        "misión": "La misión de la carrera de Ingeniería en Sistemas es...",
+        "visión": "La visión de la carrera de Ingeniería en Sistemas es...",
+        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+    },
+    "Licenciatura en Administración": {
+        "misión": "La misión de la carrera de Licenciatura en Administración es...",
+        "visión": "La visión de la carrera de Licenciatura en Administración es...",
+        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+    },
+    "Derecho": {
+        "misión": "La misión de la carrera de Derecho es...",
+        "visión": "La visión de la carrera de Derecho es...",
+        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+    },
+    "Medicina": {
+        "misión": "La misión de la carrera de Medicina es...",
+        "visión": "La visión de la carrera de Medicina es...",
+        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+    },
+    "Arquitectura": {
+        "misión": "La misión de la carrera de Arquitectura es...",
+        "visión": "La visión de la carrera de Arquitectura es...",
+        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+    }
+}
+
+
+def administrar_chatbot(text, number, messageId, name):
+    text = text.lower() # Mensaje que envió el usuario
+    list = []
+    print("mensaje del usuario: ", text)
+
+    markRead = markRead_Message(messageId)
+    list.append(markRead)
+    time.sleep(2)
+
+    if "hola" in text:
+        body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
+        footer = "Equipo UNSIJ"
+        options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
+
+        replyButtonData = listReply_Message(number, options, body, footer, "sed1", messageId)
+        replyReaction = replyReaction_Message(number, messageId, "🫡")
+        list.append(replyReaction)
+        list.append(replyButtonData)
+        
+    elif "oferta educativa" in text:
+        body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
+        footer = "Equipo UNSIJ"
+        options = ["Ingeniería en Sistemas", "Licenciatura en Administración", "Derecho", "Medicina", "Arquitectura"]
+        
+        listReplyData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        list.append(listReplyData)
+        
+    elif any(carrera.lower() in text for carrera in carreras.keys()):
+        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() in text)
+        body = f"Has seleccionado la carrera de {carrera_seleccionada}. ¿Qué te gustaría conocer?"
+        footer = "Equipo UNSIJ"
+        options = ["✅ Misión", "✅ Visión", "📋 Plan de estudio"]
+
+        replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
+        list.append(replyButtonData)
+
+    elif "misión" in text or "visión" in text or "plan de estudio" in text:
+        # Determina la carrera seleccionada
+        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() in text)
+        
+        # Responder según lo que el usuario quiera saber
+        if "misión" in text:
+            body = carreras[carrera_seleccionada]["misión"]
+        elif "visión" in text:
+            body = carreras[carrera_seleccionada]["visión"]
+        elif "plan de estudio" in text:
+            body = carreras[carrera_seleccionada]["plan_estudio"]
+        
+        footer = "Equipo UNSIJ"
+        list.append(text_Message(number, body))
+        
+    else:
+        data = text_Message(number, "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
+        list.append(data)
+
+    for item in list:
+        enviar_Mensaje_whatsapp(item)
+
+
+"""
 
 def administrar_chatbot(text,number, messageId, name):
     text = text.lower() #mensaje que envio el usuario
@@ -301,3 +392,4 @@ def replace_start(s):
         return s
         
 
+"""
