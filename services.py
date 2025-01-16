@@ -239,7 +239,7 @@ carreras = {
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
     }
 }
-
+x
 
 def administrar_chatbot(text, number, messageId, name):
     text = text.lower() # Mensaje que envió el usuario
