@@ -253,18 +253,19 @@ def administrar_chatbot(text, number, messageId, name):
     if "hola" in text:
         body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
         footer = "Equipo UNSIJ"
+        textMessage = text_Message(number,"--- Prueba ---")
         options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
         replyButtonData = listReply_Message(number, options, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
-        list.append(replyButtonData)
+        list.append(textMessage)
         
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         footer = "Equipo UNSIJ"
-        options = [" Ingeniería en Sistemas", " Licenciatura en Administración", " Derecho", " Medicina"]
+        options = ["✅ Ingeniería en Sistemas", "✅ Licenciatura en Administración", "✅ Derecho", "✅ Medicina"]
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
