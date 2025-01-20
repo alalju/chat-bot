@@ -264,7 +264,7 @@ def administrar_chatbot(text, number, messageId, name):
         print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         footer = "Equipo UNSIJ"
-        options = ["Ingeniería en Sistemas", "Licenciatura en Administración", "Derecho", "Medicina", "Arquitectura"]
+        options = [" Ingeniería en Sistemas", " Licenciatura en Administración", " Derecho", " Medicina"]
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
