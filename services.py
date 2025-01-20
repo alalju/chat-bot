@@ -232,11 +232,6 @@ carreras = {
         "misión": "La misión de la carrera de Medicina es...",
         "visión": "La visión de la carrera de Medicina es...",
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
-    },
-    "Arquitectura": {
-        "misión": "La misión de la carrera de Arquitectura es...",
-        "visión": "La visión de la carrera de Arquitectura es...",
-        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
     }
 }
 
