@@ -255,17 +255,20 @@ def administrar_chatbot(text, number, messageId, name):
         footer = "Equipo UNSIJ"
         options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
-        replyButtonData = listReply_Message(number, options, body, footer, "sed1", messageId)
+        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
         
     elif "oferta educativa" in text:
+        print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         footer = "Equipo UNSIJ"
         options = ["Ingeniería en Sistemas", "Licenciatura en Administración", "Derecho", "Medicina", "Arquitectura"]
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        replyReaction = replyReaction_Message(number, messageId, "🫡")
+        list.append(replyReaction)
         list.append(replyButtonData)
         
     elif any(carrera.lower() in text for carrera in carreras.keys()):
