@@ -213,12 +213,12 @@ def markRead_Message(messageId):
   
   
 carreras = {
-    "Ingeniería en Sistemas": {
+    "Ing en Sistemas": {
         "misión": "La misión de la carrera de Ingeniería en Sistemas es...",
         "visión": "La visión de la carrera de Ingeniería en Sistemas es...",
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
     },
-    "Licenciatura en Administración": {
+    "Lic en Administracion": {
         "misión": "La misión de la carrera de Licenciatura en Administración es...",
         "visión": "La visión de la carrera de Licenciatura en Administración es...",
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
@@ -253,23 +253,21 @@ def administrar_chatbot(text, number, messageId, name):
     if "hola" in text:
         body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
         footer = "Equipo UNSIJ"
-        textMessage = text_Message(number,"--- Prueba ---")
         options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
         replyButtonData = listReply_Message(number, options, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
-        list.append(textMessage)
+        list.append(replyButtonData)
         
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
+        textMessage = text_Message(number,"--- Prueba ---")
         footer = "Equipo UNSIJ"
-        options = ["✅ Ingeniería en Sistemas", "✅ Licenciatura en Administración", "✅ Derecho", "✅ Medicina"]
+        options = ["✅ Ing en Sistemas", "✅ Lic en Administracion", "✅ Derecho", "✅ Medicina"]
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
-        replyReaction = replyReaction_Message(number, messageId, "🫡")
-        list.append(replyReaction)
         list.append(replyButtonData)
         
     elif any(carrera.lower() in text for carrera in carreras.keys()):
