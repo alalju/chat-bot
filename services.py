@@ -255,7 +255,7 @@ def administrar_chatbot(text, number, messageId, name):
         footer = "Equipo UNSIJ"
         options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed1", messageId)
+        replyButtonData = listReply_Message(number, options, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
