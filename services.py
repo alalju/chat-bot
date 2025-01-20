@@ -239,7 +239,7 @@ carreras = {
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
     }
 }
-x
+
 
 def administrar_chatbot(text, number, messageId, name):
     text = text.lower() # Mensaje que envió el usuario
@@ -265,8 +265,8 @@ def administrar_chatbot(text, number, messageId, name):
         footer = "Equipo UNSIJ"
         options = ["Ingeniería en Sistemas", "Licenciatura en Administración", "Derecho", "Medicina", "Arquitectura"]
         
-        listReplyData = listReply_Message(number, options, body, footer, "sed2", messageId)
-        list.append(listReplyData)
+        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        list.append(replyButtonData)
         
     elif any(carrera.lower() in text for carrera in carreras.keys()):
         carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() in text)
