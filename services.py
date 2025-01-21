@@ -62,12 +62,16 @@ def text_Message_2(number,text):
                 "recipient_type": "individual",
                 "to": number,
                 "type": "text",
-                "text": {
-                    "body": text
-                },
-                "footer": {
-                    "text": footer
-                },
+                "type": "interactive",
+                "interactive": {
+                    "type": "button",
+                    "body": {
+                        "text": body
+                    },
+                    "footer": {
+                        "text": footer
+                    }
+                }
             }
     )
     return data
@@ -297,7 +301,7 @@ def administrar_chatbot(text, number, messageId, name):
         footer = "Equipo UNSIJ"
         # options = ["✅ Fichas", "✅ examen de selección", "✅ Inscripciones al curso propedéutico", "✅ Curso propedéutico"]
         
-        replyButtonData = text_Message_2(number, options, body, footer, "sed2", messageId)
+        replyButtonData = text_Message_2(number, options, body, footer, "sed12", messageId)
         list.append(replyButtonData)
     
     elif "fechas" in text:
