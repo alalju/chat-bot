@@ -235,6 +235,9 @@ carreras = {
     }
 }
 
+carreras = {
+    
+}
 
 
 # Variable global para rastrear la carrera seleccionada
@@ -262,9 +265,14 @@ def administrar_chatbot(text, number, messageId, name):
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
-  #--------------- Adair --------------- 
-    elif "¿qué es la unsij?" in text:
-        body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
+    
+    #--------------- Adair --------------- 
+  elif "¿qué es la unsij?" in text:
+        body = '''
+              La Universidad de la Sierra Juárez (UNSIJ) forma parte del Sistema de Universidades Estatales de Oaxaca (SUNEO),
+              es una Institución Pública de Educación Superior e Investigación Científica del Gobierno del Estado de Oaxaca,
+              con apoyo y reconocimiento del Gobierno Federal.
+              '''  
         footer = "Equipo UNSIJ"
         # options = ["✅ ichas", "✅ examen de selección", "✅ Inscripciones al curso propedéutico", "✅ Curso propedéutico"]
         
@@ -278,6 +286,7 @@ def administrar_chatbot(text, number, messageId, name):
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
+        
         
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
