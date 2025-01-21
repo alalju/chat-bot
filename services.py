@@ -213,7 +213,7 @@ def markRead_Message(messageId):
   
   
 carreras = {
-    "Ing en Sistemas": {
+    "Ing Forestal": {
         "misión": "La misión de la carrera de Ingeniería en Sistemas es...",
         "visión": "La visión de la carrera de Ingeniería en Sistemas es...",
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
@@ -260,7 +260,7 @@ def administrar_chatbot(text, number, messageId, name):
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         textMessage = text_Message(number,"--- Prueba ---")
         footer = "Equipo UNSIJ"
-        options = ["✅ Ing en Sistemas", "✅ Lic en Administracion", "✅ Derecho", "✅ Medicina"]
+        options = ["✅ Ing Forestal", "✅ Lic en Administracion", "✅ Derecho", "✅ Medicina"]
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
