@@ -55,6 +55,24 @@ def text_Message(number,text):
     )
     return data
 
+def text_Message_2(number,text):
+    data = json.dumps(
+            {
+                "messaging_product": "whatsapp",    
+                "recipient_type": "individual",
+                "to": number,
+                "type": "text",
+                "text": {
+                    "body": text
+                },
+                "footer": {
+                    "text": footer
+                },
+            }
+    )
+    return data
+
+  
 def buttonReply_Message(number, options, body, footer, sedd,messageId):
     buttons = []
     for i, option in enumerate(options):
@@ -236,7 +254,10 @@ carreras = {
 }
 
 carreras = {
-    
+    "entrega_fichas" : "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
+    "examen_seleccion": "El examén de selección será del 25 de mayo y 01 de julio de 2024",
+    "inscripcion_cp": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
+    "curso_propedeutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
 }
 
 
@@ -274,9 +295,9 @@ def administrar_chatbot(text, number, messageId, name):
               con apoyo y reconocimiento del Gobierno Federal.
               '''  
         footer = "Equipo UNSIJ"
-        # options = ["✅ ichas", "✅ examen de selección", "✅ Inscripciones al curso propedéutico", "✅ Curso propedéutico"]
+        # options = ["✅ Fichas", "✅ examen de selección", "✅ Inscripciones al curso propedéutico", "✅ Curso propedéutico"]
         
-        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        replyButtonData = text_Message_2(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
     
     elif "fechas" in text:
@@ -286,6 +307,8 @@ def administrar_chatbot(text, number, messageId, name):
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
+    
+    
         
         
     elif "oferta educativa" in text:
