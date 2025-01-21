@@ -234,8 +234,13 @@ carreras = {
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
     }
 }
+
+
+
 # Variable global para rastrear la carrera seleccionada
 carrera_seleccionada = None
+fecha_seleccionada = None
+
 
 def administrar_chatbot(text, number, messageId, name):
     global carrera_seleccionada  # Usamos la variable global para almacenar la carrera seleccionada
@@ -257,11 +262,26 @@ def administrar_chatbot(text, number, messageId, name):
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
+  #--------------- Adair --------------- 
+    elif "¿qué es la unsij?" in text:
+        body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
+        footer = "Equipo UNSIJ"
+        # options = ["✅ ichas", "✅ examen de selección", "✅ Inscripciones al curso propedéutico", "✅ Curso propedéutico"]
+        
+        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        list.append(replyButtonData)
+    
+    elif "fechas" in text:
+        body = "¿En que fecha estas interesad@?"
+        footer = "Equipo UNSIJ"
+        options = ["✅ Entrega de fichas", "✅ Examen de selección", "✅ Inscripciones al CP", "✅ Curso propedéutico"]
+        
+        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        list.append(replyButtonData)
         
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
-        textMessage = text_Message(number,"--- Prueba ---")
         footer = "Equipo UNSIJ"
         options = ["✅ Ing Forestal", "✅ Lic en Administracion", "✅ Derecho", "✅ Medicina"]
         
