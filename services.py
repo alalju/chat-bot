@@ -234,10 +234,13 @@ carreras = {
         "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
     }
 }
-
+# Variable global para rastrear la carrera seleccionada
+carrera_seleccionada = None
 
 def administrar_chatbot(text, number, messageId, name):
-    text = text.lower() # Mensaje que envió el usuario
+    global carrera_seleccionada  # Usamos la variable global para almacenar la carrera seleccionada
+
+    text = text.lower()  # Mensaje que envió el usuario
     list = []
     print("mensaje del usuario: ", text)
 
@@ -274,18 +277,13 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
 
-    elif "misión" in text or "visión" in text or "plan de estudio" in text:
-        # Determina la carrera seleccionada
-        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() in text)
-        
-        # Responder según lo que el usuario quiera saber
+    elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
         if "misión" in text:
             body = carreras[carrera_seleccionada]["misión"]
         elif "visión" in text:
             body = carreras[carrera_seleccionada]["visión"]
         elif "plan de estudio" in text:
             body = carreras[carrera_seleccionada]["plan_estudio"]
-        
         footer = "Equipo UNSIJ"
         list.append(text_Message(number, body))
         
