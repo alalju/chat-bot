@@ -302,14 +302,8 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
 
-    elif any(fecha.lower() in text for fecha in fechas.keys()):
-        fecha_seleccionada = next(fecha for fecha in fechas.keys() if fecha.lower() in text)
-        body = f"Has seleccionado la fecha: {fecha_seleccionada.replace('_', ' ').title()}. Aquí está la información:"
-        footer = "Equipo UNSIJ"
-        body += "\n\n" + fechas[fecha_seleccionada]
+  
 
-        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
-        list.append(replyButtonData)
 
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
