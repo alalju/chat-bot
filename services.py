@@ -258,10 +258,10 @@ carreras = {
 }
 
 fechas = {
-    "entrega_fichas": "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
-    "examen_seleccion": "El examen de selección será del 25 de mayo y 01 de julio de 2024",
-    "inscripcion_cp": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
-    "curso_propedeutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
+    "entrega de fichas": "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
+    "examen de selección": "El examen de selección será del 25 de mayo y 01 de julio de 2024",
+    "inscripciones al CP": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
+    "curso propedéutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
 }
 
 # Variable global para rastrear la carrera seleccionada
@@ -302,9 +302,14 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
 
+    elif any(carrera.lower() in text for carrera in fechas.keys()):
+        fecha_seleccionada = next(carrera for carrera in fechas.keys() if carrera.lower() in text)
+        body = f"Has seleccionado la carrera de {fecha_seleccionada}. ¿Qué te gustaría conocer?"
+        footer = "Equipo UNSIJ"
+
+        replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
+        list.append(replyButtonData)
   
-
-
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
