@@ -288,9 +288,12 @@ def administrar_chatbot(text, number, messageId, name):
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
-    elif "¿que es la unsij?" in text:
-        body = ""
-
+    elif "¿qué es la unsij?" in text:
+        body = "La UNSIJ es un instrumento de desarrollo para la región de la Sierra Norte, como Centro de Educación Superior e Investigación Científica, enfocado a la formación, especialización y desarrollo integral de profesionales en diversos aspectos de las necesidades del país, así como para generar empresas y activar la economía regional, fomentando constantemente la dignificación del trabajo, la honestidad y el respeto a los valores morales nacionales y universales."
+        footer = "Equipo UNSIJ"
+        replyMsg = text_Message_2(number, body, footer)
+        list.append(replyMsg)
+        
     elif "fechas" in text:
         body = "¿Qué fecha te interesa?"
         footer = "Equipo UNSIJ"
@@ -299,13 +302,14 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
 
-    elif any(option in text for option in fechas.keys()):
-        fecha_seleccionada = next(option for option in fechas.keys() if option in text)
-        
-        body = fechas[fecha_seleccionada]
+    elif any(fecha.lower() in text for fecha in fechas.keys()):
+        fecha_seleccionada = next(fecha for fecha in fechas.keys() if fecha.lower() in text)
+        body = f"Has seleccionado la fecha: {fecha_seleccionada.replace('_', ' ').title()}. Aquí está la información:"
         footer = "Equipo UNSIJ"
-        
-        list.append(text_Message(number, body, footer))
+        body += "\n\n" + fechas[fecha_seleccionada]
+
+        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        list.append(replyButtonData)
 
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
