@@ -55,7 +55,7 @@ def text_Message(number,text):
     )
     return data
 
-def text_Message_2(number,text):
+def text_Message_2(number,body, footer):
     data = json.dumps(
             {
                 "messaging_product": "whatsapp",    
@@ -258,8 +258,8 @@ carreras = {
 }
 
 fechas = {
-    "entrega_fichas" : "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
-    "examen_seleccion": "El examén de selección será del 25 de mayo y 01 de julio de 2024",
+    "entrega_fichas": "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
+    "examen_seleccion": "El examen de selección será del 25 de mayo y 01 de julio de 2024",
     "inscripcion_cp": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
     "curso_propedeutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
 }
@@ -288,36 +288,25 @@ def administrar_chatbot(text, number, messageId, name):
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
-    
-    #--------------- Adair --------------- 
-    elif "¿qué es la unsij?" in text:
-        body = '''
-              La Universidad de la Sierra Juárez (UNSIJ) forma parte del Sistema de Universidades Estatales de Oaxaca (SUNEO),
-              es una Institución Pública de Educación Superior e Investigación Científica del Gobierno del Estado de Oaxaca,
-              con apoyo y reconocimiento del Gobierno Federal.
-              '''  
-        footer = "Equipo UNSIJ"
-        # options = ["✅ Fichas", "✅ examen de selección", "✅ Inscripciones al curso propedéutico", "✅ Curso propedéutico"]
-        
-        replyButtonData = text_Message_2(number, options, body, footer, "sed12", messageId)
-        list.append(replyButtonData)
-    
+    elif "¿que es la unsij?" in text:
+        body = ""
+
     elif "fechas" in text:
-        body = "¿Que fecha te intereza?"
+        body = "¿Qué fecha te interesa?"
         footer = "Equipo UNSIJ"
         options = ["✅ Entrega de fichas", "✅ Examen de selección", "✅ Inscripciones al CP", "✅ Curso propedéutico"]
 
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
 
-    elif any(evento.lower() in text for evento in carreras.keys()):
-        evento_seleccionado = next(evento for evento in carreras.keys() if evento.lower() in text)
-        body = f"Has seleccionado {evento_seleccionado.replace('_', ' ').capitalize()}. La fecha correspondiente es: {carreras[evento_seleccionado]}"
+    elif any(option in text for option in fechas.keys()):
+        fecha_seleccionada = next(option for option in fechas.keys() if option in text)
+        
+        body = fechas[fecha_seleccionada]
         footer = "Equipo UNSIJ"
-
-        # Enviar la respuesta con la fecha
+        
         list.append(text_Message(number, body, footer))
-    
+
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
@@ -345,7 +334,7 @@ def administrar_chatbot(text, number, messageId, name):
             body = carreras[carrera_seleccionada]["plan_estudio"]
         footer = "Equipo UNSIJ"
         list.append(text_Message(number, body))
-        
+
     else:
         data = text_Message(number, "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
         list.append(data)
