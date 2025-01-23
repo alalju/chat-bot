@@ -305,15 +305,27 @@ def administrar_chatbot(text, number, messageId, name):
         list.append(replyButtonData)
     
     elif "fechas" in text:
-        body = "¿En que fecha estas interesad@?"
+    print("Oferta educativa detectada")
+        body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         footer = "Equipo UNSIJ"
-        options = ["✅ Entrega de fichas", "✅ Examen de selección", "✅ Inscripciones al CP", "✅ Curso propedéutico"]
+        options = ["✅ Ing Forestal", "✅ Lic en Administracion", "✅ Derecho", "✅ Medicina"]
         
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
+    options = ["✅ Entrega de fichas", "✅ Examen de selección", "✅ Inscripciones al CP", "✅ Curso propedéutico"]
     
+    replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+    list.append(replyButtonData)
+
+    # Luego, cuando el usuario selecciona una de las opciones, respondemos con la fecha correspondiente.
+    elif any(evento.lower() in text for evento in carreras.keys()):
+        evento_seleccionado = next(evento for evento in carreras.keys() if evento.lower() in text)
+        body = f"Has seleccionado {evento_seleccionado.replace('_', ' ').capitalize()}. La fecha correspondiente es: {carreras[evento_seleccionado]}"
+        footer = "Equipo UNSIJ"
+
+        # Enviar la respuesta con la fecha
+        list.append(text_Message(number, body, footer))
     
-        
         
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
