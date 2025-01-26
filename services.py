@@ -270,6 +270,7 @@ fecha_seleccionada = None
 
 def administrar_chatbot(text, number, messageId, name):
     global carrera_seleccionada  # Usamos la variable global para almacenar la carrera seleccionada
+    global fecha_seleccionada  # Usamos la variable global para almacenar la fecha seleccionada
 
     text = text.lower()  # Mensaje que envió el usuario
     list = []
@@ -288,20 +289,18 @@ def administrar_chatbot(text, number, messageId, name):
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
+        
     elif "¿qué es la unsij?" in text:
-        body = "La UNSIJ es un instrumento de desarrollo para la región de la Sierra Norte, como Centro de Educación Superior e Investigación Científica, enfocado a la formación, especialización y desarrollo integral de profesionales en diversos aspectos de las necesidades del país, así como para generar empresas y activar la economía regional, fomentando constantemente la dignificación del trabajo, la honestidad y el respeto a los valores morales nacionales y universales."
+        body = "La UNSIJ es un instrumento de desarrollo para la región de la Sierra Norte, como Centro de Educación Superior e Investigación Científica..."
         footer = "Equipo UNSIJ"
         replyMsg = text_Message_2(number, body, footer)
         list.append(replyMsg)
         
-    
-  
     elif "oferta educativa" in text:
-        print("Oferta educativa detectada")
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         footer = "Equipo UNSIJ"
         options = ["✅ Ing Forestal", "✅ Lic en Administracion", "✅ Derecho", "✅ Medicina"]
-        
+
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
         
@@ -313,6 +312,22 @@ def administrar_chatbot(text, number, messageId, name):
 
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
+
+    elif "fechas" in text:
+        body = "Estas son las fechas importantes:\n"
+        for fecha in fechas.keys():
+            body += f"- {fecha.capitalize()}\n"
+        footer = "Equipo UNSIJ"
+        options = list(fechas.keys())
+
+        replyButtonData = listReply_Message(number, options, body, footer, "sed4", messageId)
+        list.append(replyButtonData)
+
+    elif fecha_seleccionada:  # Si hay una fecha seleccionada
+        fecha_seleccionada = next(fecha for fecha in fechas.keys() if fecha.lower() in text)
+        body = fechas[fecha_seleccionada]
+        footer = "Equipo UNSIJ"
+        list.append(text_Message(number, body))
 
     elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
         if "misión" in text:
@@ -330,6 +345,7 @@ def administrar_chatbot(text, number, messageId, name):
 
     for item in list:
         enviar_Mensaje_whatsapp(item)
+
 
 
 
