@@ -294,21 +294,21 @@ def administrar_chatbot(text, number, messageId, name):
         replyMsg = text_Message_2(number, body, footer)
         list.append(replyMsg)
         
-    elif "fechas" in text:
-        body = "¿Qué fecha te interesa?"
-        footer = "Equipo UNSIJ"
-        options = ["✅ Entrega de fichas", "✅ Examen de selección", "✅ Inscripciones al CP", "✅ Curso propedéutico"]
+    elif "fechas" in text:  # Opciones de fechas
+        body = "Selecciona una opción para conocer más detalles:"
+        footer = "Fechas Importantes"
+        options = list(fechas.keys())  # Extraer las opciones desde el diccionario `fechas`
 
-        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        replyButtonData = listReply_Message(number, options, body, footer, "fechas", messageId)
         list.append(replyButtonData)
 
-    elif any(carrera.lower() in text for carrera in fechas.keys()):
-        fecha_seleccionada = next(carrera for carrera in fechas.keys() if carrera.lower() in text)
-        body = f"Has seleccionado la carrera de {fecha_seleccionada}. ¿Qué te gustaría conocer?"
+    elif text in fechas:  # Mostrar la información correspondiente a la fecha seleccionada
+        body = fechas[text]
         footer = "Equipo UNSIJ"
+        options = ["✅ Sí, necesito más información", "❌ No, gracias."]
 
-        replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
-        list.append(replyButtonData)
+        buttonReplyData = buttonReply_Message(number, options, body, footer, "detalleFecha", messageId)
+        list.append(buttonReplyData)
   
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
