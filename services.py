@@ -302,8 +302,9 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "fechas", messageId)
         list.append(replyButtonData)
 
-    elif text in fechas:  # Mostrar la información correspondiente a la fecha seleccionada
-        body = fechas[text]
+    elif text.strip().lower() in map(str.lower, fechas.keys()):
+        fecha_seleccionada = next(key for key in fechas.keys() if key.lower() == text.strip().lower())
+        body = fechas[fecha_seleccionada]
         footer = "Equipo UNSIJ"
         options = ["✅ Sí, necesito más información", "❌ No, gracias."]
 
