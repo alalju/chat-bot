@@ -294,22 +294,7 @@ def administrar_chatbot(text, number, messageId, name):
         replyMsg = text_Message_2(number, body, footer)
         list.append(replyMsg)
         
-    elif "fechas" in text:  # Opciones de fechas
-        body = "Selecciona una opción para conocer más detalles:"
-        footer = "Fechas Importantes"
-        options = list(fechas.keys())  # Extraer las opciones desde el diccionario `fechas`
-
-        replyButtonData = listReply_Message(number, options, body, footer, "fechas", messageId)
-        list.append(replyButtonData)
-
-    elif text.strip().lower() in map(str.lower, fechas.keys()):
-        fecha_seleccionada = next(key for key in fechas.keys() if key.lower() == text.strip().lower())
-        body = fechas[fecha_seleccionada]
-        footer = "Equipo UNSIJ"
-        options = ["✅ Sí, necesito más información", "❌ No, gracias."]
-
-        buttonReplyData = buttonReply_Message(number, options, body, footer, "detalleFecha", messageId)
-        list.append(buttonReplyData)
+    
   
     elif "oferta educativa" in text:
         print("Oferta educativa detectada")
