@@ -241,12 +241,12 @@ carreras = {
         "visión": "Consolidarse como un programa educativo líder a nivel nacional en la enseñanza de la ciencia forestal y en la formación de profesionales en el manejo sustentable de los ecosistemas forestales.",
         "objetivo": "Formar profesionistas con conocimientos, habilidades, valores y aptitudes capaces de manejar los ecosistemas forestales y coadyuvar al desarrollo sustentable del sector forestal."
     },
-    "Ciencias Ambientales": {
+    "Ambientales": {
         "misión": "Ser una licenciatura de excelencia en el ámbito local y nacional, a partir de un plan de estudios integral e intercultural de acuerdo a las necesidades actuales integrando contenidos éticos, democráticos y humanísticos. Contando con una planta académica de calidad, que permita la formación de estudiantes aptos para favorecer el desarrollo sostenible en sus entornos de vida y de influencia, a través de líneas de investigación que aborden los problemas socioambientales y fomenten el Desarrollo Comunitario.",
         "visión": "Formar profesionales en el área de Ciencias Ambientales, a través de los procesos integrales desarrollados en el currículo que se fundamenta en los ejes de docencia, investigación, promoción al desarrollo y difusión de la cultura, con un enfoque intercultural; promoviendo la adquisición de conocimientos, actitudes, habilidades y destrezas con un alto nivel de responsabilidad y de excelencia, que permita a los egresados trabajar en equipos transdisciplinarios y multidisciplinarios, en un contexto ético, democrático y humanista para la prevención, análisis, evaluación e implementación de soluciones creativas e innovadoras a los problemas socioambientales, con el propósito de lograr el desarrollo sostenible local y nacional.",
         "objetivo": "Formar profesionales con una visión integral en las Ciencias Ambientales, que adquieran los conocimientos en diversas disciplinas científicas, sociales, humanísticas y de gestión, que les permita abordar de manera holística la problemática ambiental, y sean capaces de generar soluciones alternativas, propuestas de manejo y uso sostenible de los recursos naturales."
     },
-    "Desarrollo de Software": {
+    "Software": {
         "misión": "Formar profesionistas altamente competitivos en el área de desarrollo de software y sistemas inteligentes comprometidos con el bienestar de la sociedad, capaces de detectar, proponer y desarrollar soluciones efectivas e innovadoras, que impulsen el desarrollo social, brindando a los estudiantes una educación superior inclusiva de excelencia, promoviendo el desarrollo científico, tecnológico y social a través de proyectos en la región, en el estado y del país.",
         "visión": "Consolidarse como un programa educativo de vanguardia reconocido por el excelente nivel académico de sus alumnos, egresados y cuerpo docente, con capacidad de innovación, compromiso ético y social, liderazgo transformador y el manejo responsable de la información; demostrando ser un programa generador de profesionales comprometidos con las necesidades de su entorno y capaces de mejorar la situación económica, social y tecnológica de la región, sin descuidar el ambiente y la cultura, ayudando a los egresados a integrarse en diferentes ámbitos del campo laboral.",
         "objetivo": "Formar ingenieros en desarrollo de software y sistemas inteligentes, líderes, analíticos, críticos, creativos y emprendedores, con una sólida preparación científica, tecnológica y humanista, con la capacidad y habilidad para analizar, desarrollar e implementar sistemas, colaborando activamente dando respuesta a las problemáticas y necesidades que se detecten en materia de software, actuando como agentes de cambio en el desarrollo de la región, del estado y del país."
@@ -256,7 +256,7 @@ carreras = {
         "visión": "Posicionarse como un programa educativo reconocido por su excelencia académica y la formación del pensamiento crítico en sus estudiantes y graduados. Este reconocimiento se respalda en el destacado desempeño profesional de los egresados, resultado de la promoción de la interculturalidad, el respeto y cuidado al medio ambiente, así como el uso responsable de tecnologías asociadas con las líneas de generación y aplicación del conocimiento en los ámbitos científico, tecnológico y social, orientadas al manejo sustentable de los recursos naturales.",
         "objetivo": "La Licenciatura en Biología tiene como objetivo fundamental formar profesionistas altamente calificados en el conocimiento de los seres vivos y su entorno, con una base científica y una perspectiva interdisciplinar, capaces de generar nuevos conocimientos a través de la investigación y proponer soluciones a las problemáticas relacionadas con la conservación, preservación, restauración y la gestión de los recursos naturales a nivel local, regional y nacional."
     },
-    "Administración Turística": {
+    "Turismo": {
         "misión": "Consolidar profesionales de manera integral capaces de incidir en el desarrollo turístico sostenible de la región, del estado y del país con una perspectiva intercultural y con un alto compromiso social.",
         "visión": "Ser referente en la excelencia académica, la innovación en la enseñanza y el compromiso con la gestión responsable del turismo.",
         "objetivo": "Formar profesionales que adquieran conocimientos, habilidades, actitudes y valores que serán promovidos y ejecutados en las organizaciones turísticas."
@@ -323,7 +323,7 @@ def administrar_chatbot(text, number, messageId, name):
         elif "visión" in text:
             body = carreras[carrera_seleccionada]["visión"]
         elif "objetivo" in text:
-            body = carreras[carrera_seleccionada]["plan_estudio"]
+            body = carreras[carrera_seleccionada]["objetivo"]
         footer = "Equipo UNSIJ"
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
