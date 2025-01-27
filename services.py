@@ -247,7 +247,7 @@ carreras = {
         "objetivo": "Formar profesionales con una visión integral en las Ciencias Ambientales, que adquieran los conocimientos en diversas disciplinas científicas, sociales, humanísticas y de gestión, que les permita abordar de manera holística la problemática ambiental, y sean capaces de generar soluciones alternativas, propuestas de manejo y uso sostenible de los recursos naturales."
     },
     "Software": {
-        "misión": "Formar profesionistas altamente competitivos en el área de desarrollo de software y sistemas inteligentes comprometidos con el bienestar de la sociedad, capaces de detectar, proponer y desarrollar soluciones efectivas e innovadoras, que impulsen el desarrollo social, brindando a los estudiantes una educación superior inclusiva de excelencia, promoviendo el desarrollo científico, tecnológico y social a través de proyectos en la región, en el estado y del país.",
+        "misión": "Formar profesionistas altamente competitivos .",
         "visión": "Consolidarse como un programa educativo de vanguardia reconocido por el excelente nivel académico de sus alumnos, egresados y cuerpo docente, con capacidad de innovación, compromiso ético y social, liderazgo transformador y el manejo responsable de la información; demostrando ser un programa generador de profesionales comprometidos con las necesidades de su entorno y capaces de mejorar la situación económica, social y tecnológica de la región, sin descuidar el ambiente y la cultura, ayudando a los egresados a integrarse en diferentes ámbitos del campo laboral.",
         "objetivo": "Formar ingenieros en desarrollo de software y sistemas inteligentes, líderes, analíticos, críticos, creativos y emprendedores, con una sólida preparación científica, tecnológica y humanista, con la capacidad y habilidad para analizar, desarrollar e implementar sistemas, colaborando activamente dando respuesta a las problemáticas y necesidades que se detecten en materia de software, actuando como agentes de cambio en el desarrollo de la región, del estado y del país."
     },
@@ -318,6 +318,8 @@ def administrar_chatbot(text, number, messageId, name):
         list.append(replyButtonData)
 
     elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
+        print(carrera_seleccionada)
+        print("misión" in text)
         if "misión" in text:
             body = carreras[carrera_seleccionada]["misión"]
         elif "visión" in text:
