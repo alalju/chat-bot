@@ -333,11 +333,9 @@ def administrar_chatbot(text, number, messageId, name):
         list.append(text_Message(number, body))
         
     elif "fechas" in normalizar_texto(text):
-        print("Texto recibido tras normalización:", normalizar_texto(text))
         body = "Selecciona una opción para conocer más detalles:"
-        footer = "Fechas Importantes"
-        options = list(fechas.keys())  # Extraer las opciones desde el diccionario `fechas`
-        print("Mensaje generado:", options)
+        print("Mensaje generado:", list(fechas.keys())
+        options = list(fechas.keys()) 
         replyButtonData = listReply_Message(number, options, body, footer, "fechas", messageId)
         print("Mensaje generado:", replyButtonData)
 
