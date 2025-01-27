@@ -267,10 +267,11 @@ carreras = {
 
 fechas = {
     "entrega de fichas": "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
-    "examen de selección": "El examen de selección será del 25 de mayo y 01 de julio de 2024",
-    "inscripciones al CP": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
-    "curso propedéutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
+    "examen de seleccion": "El examen de selección será del 25 de mayo y 01 de julio de 2024",
+    "inscripciones al cp": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
+    "curso propedeutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
 }
+
 
 # Variable global para rastrear la carrera seleccionada
 carrera_seleccionada = None
@@ -321,20 +322,6 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
 
-    elif "fechas" in text:
-        body = "Estas son las fechas importantes relacionadas con el proceso de inscripción. ¿Qué fecha te interesa?"
-        footer = "Equipo UNSIJ"
-        options = list(fechas.keys())  # Convertir las fechas en una lista de opciones para elegir
-
-        replyButtonData = listReply_Message(number, options, body, footer, "sed4", messageId)
-        list.append(replyButtonData)
-
-    elif fecha_seleccionada:  # Si hay una fecha seleccionada
-        fecha_seleccionada = next(fecha for fecha in fechas.keys() if fecha.lower() in text)
-        body = fechas[fecha_seleccionada]
-        footer = "Equipo UNSIJ"
-        list.append(text_Message(number, body))
-
     elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
         if "misión" in text:
             body = carreras[carrera_seleccionada]["misión"]
@@ -344,6 +331,29 @@ def administrar_chatbot(text, number, messageId, name):
             body = carreras[carrera_seleccionada]["plan_estudio"]
         footer = "Equipo UNSIJ"
         list.append(text_Message(number, body))
+        
+    elif "fechas" in normalizar_texto(text):
+        print("Texto recibido tras normalización:", normalizar_texto(text))
+        body = "Selecciona una opción para conocer más detalles:"
+        footer = "Fechas Importantes"
+        options = list(fechas.keys())  # Extraer las opciones desde el diccionario `fechas`
+        print("Mensaje generado:", options)
+        replyButtonData = listReply_Message(number, options, body, footer, "fechas", messageId)
+        print("Mensaje generado:", replyButtonData)
+
+        list.append(replyButtonData)
+
+    elif normalizar_texto(text) in map(normalizar_texto, fechas.keys()):
+        fecha_seleccionada = next(
+            key for key in fechas.keys() if normalizar_texto(key) == normalizar_texto(text)
+        )
+        body = fechas[fecha_seleccionada]
+        footer = "Equipo UNSIJ"
+        options = ["✅ Sí, necesito más información", "❌ No, gracias."]
+
+        buttonReplyData = buttonReply_Message(number, options, body, footer, "detalleFecha", messageId)
+        list.append(buttonReplyData)
+
 
     else:
         data = text_Message(number, "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
