@@ -265,12 +265,6 @@ carreras = {
     }
 }
 
-fechas = {
-    "entrega de fichas": "La entrega de fichas será del 16 de febrero al 26 de junio de 2024",
-    "examen de seleccion": "El examen de selección será del 25 de mayo y 01 de julio de 2024",
-    "inscripciones al cp": "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024",
-    "curso propedeutico": "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
-}
 
 
 # Variable global para rastrear la carrera seleccionada
@@ -330,44 +324,44 @@ def administrar_chatbot(text, number, messageId, name):
         elif "plan de estudio" in text:
             body = carreras[carrera_seleccionada]["plan_estudio"]
         footer = "Equipo UNSIJ"
-        list.append(text_Message(number, body))
+        replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
+        list.append(replyButtonData)
         
-     elif "fechas" in text:
+    elif "fechas" in text:
         body = "Selecciona un evento para ver las fechas:"
         footer = "Equipo UNSIJ"
         options = ["🗓️ Entrega de fichas", "🗓️ Examen de selección", "🗓️ Inscripciones al CP", "🗓️ Curso propedéutico"]
 
-        replyButtonData = listReply_Message(number, options, body, footer, "fechas", messageId)
-        lista_respuestas.append(replyButtonData)
+        replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
+        list.append(replyButtonData)
     elif "entrega de fichas" in text:
         body = "La entrega de fichas será del 16 de febrero al 26 de junio de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "fecha_entrega_fichas", messageId)
-        lista_respuestas.append(replyButtonData)
+        replyButtonData = listReply_Message(number, options, body, footer, "fecha_entrega_fichas", messageId)
+        list.append(replyButtonData)
     elif "examen de selección" in text:
         body = "El examen de selección será del 25 de mayo y 01 de julio de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "fecha_examen_seleccion", messageId)
-        lista_respuestas.append(replyButtonData)
+        replyButtonData = listReply_Message(number, options, body, footer, "fecha_examen_seleccion", messageId)
+        list.append(replyButtonData)
     elif "inscripciones al cp" in text:
         body = "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "fecha_inscripciones_cp", messageId)
-        lista_respuestas.append(replyButtonData)
+        replyButtonData = listReply_Message(number, options, body, footer, "fecha_inscripciones_cp", messageId)
+        list.append(replyButtonData)
     elif "curso propedeutico" in text:
         body = "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
 
-        replyButtonData = buttonReply_Message(number, options, body, footer, "fecha_curso_propedeutico", messageId)
-        lista_respuestas.append(replyButtonData)
-
+        replyButtonData = listReply_Message(number, options, body, footer, "fecha_curso_propedeutico", messageId)
+        list.append(replyButtonData)
 
     else:
         data = text_Message(number, "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
