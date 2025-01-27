@@ -244,24 +244,24 @@ def markRead_Message(messageId):
   
 carreras = {
     "Ing Forestal": {
-        "misión": "La misión de la carrera de Ingeniería en Sistemas es...",
-        "visión": "La visión de la carrera de Ingeniería en Sistemas es...",
-        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+        "misión": "Formar profesionistas con conocimientos técnicos y científicos que contribuyan al manejo sustentable de los ecosistemas forestales en beneficio de la sociedad, mediante una educación de calidad con base en principios éticos.",
+        "visión": "Consolidarse como un programa educativo líder a nivel nacional en la enseñanza de la ciencia forestal y en la formación de profesionales en el manejo sustentable de los ecosistemas forestales.",
+        "objetivo": "Formar profesionistas con conocimientos, habilidades, valores y aptitudes capaces de manejar los ecosistemas forestales y coadyuvar al desarrollo sustentable del sector forestal."
     },
-    "Lic en Administracion": {
-        "misión": "La misión de la carrera de Licenciatura en Administración es...",
-        "visión": "La visión de la carrera de Licenciatura en Administración es...",
-        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+    "Ciencias Ambientales": {
+        "misión": "Ser una licenciatura de excelencia en el ámbito local y nacional, a partir de un plan de estudios integral e intercultural de acuerdo a las necesidades actuales integrando contenidos éticos, democráticos y humanísticos. Contando con una planta académica de calidad, que permita la formación de estudiantes aptos para favorecer el desarrollo sostenible en sus entornos de vida y de influencia, a través de líneas de investigación que aborden los problemas socioambientales y fomenten el Desarrollo Comunitario.",
+        "visión": "Formar profesionales en el área de Ciencias Ambientales, a través de los procesos integrales desarrollados en el currículo que se fundamenta en los ejes de docencia, investigación, promoción al desarrollo y difusión de la cultura, con un enfoque intercultural; promoviendo la adquisición de conocimientos, actitudes, habilidades y destrezas con un alto nivel de responsabilidad y de excelencia, que permita a los egresados trabajar en equipos transdisciplinarios y multidisciplinarios, en un contexto ético, democrático y humanista para la prevención, análisis, evaluación e implementación de soluciones creativas e innovadoras a los problemas socioambientales, con el propósito de lograr el desarrollo sostenible local y nacional.",
+        "objetivo": "El plan de estudios incluye los siguientes módulos..."
     },
     "Derecho": {
         "misión": "La misión de la carrera de Derecho es...",
         "visión": "La visión de la carrera de Derecho es...",
-        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+        "objetivo": "El plan de estudios incluye los siguientes módulos..."
     },
     "Medicina": {
         "misión": "La misión de la carrera de Medicina es...",
         "visión": "La visión de la carrera de Medicina es...",
-        "plan_estudio": "El plan de estudios incluye los siguientes módulos..."
+        "objetivo": "El plan de estudios incluye los siguientes módulos..."
     }
 }
 
@@ -274,6 +274,7 @@ fecha_seleccionada = None
 def administrar_chatbot(text, number, messageId, name):
     global carrera_seleccionada  # Usamos la variable global para almacenar la carrera seleccionada
     global fecha_seleccionada  # Usamos la variable global para almacenar la fecha seleccionada
+    mainOptions = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
     text = text.lower()  # Mensaje que envió el usuario
     list = []
@@ -286,18 +287,20 @@ def administrar_chatbot(text, number, messageId, name):
     if "hola" in text:
         body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
         footer = "Equipo UNSIJ"
-        options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
 
-        replyButtonData = listReply_Message(number, options, body, footer, "sed1", messageId)
+        replyButtonData = listReply_Message(number, mainOptions, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
         list.append(replyReaction)
         list.append(replyButtonData)
         
     elif "¿qué es la unsij?" in text:
         body = "La UNSIJ es un instrumento de desarrollo para la región de la Sierra Norte, como Centro de Educación Superior e Investigación Científica..."
+        body2 = "¿En qué más te podemos ayudar?"
         footer = "Equipo UNSIJ"
-        replyMsg = text_Message_2(number, body, footer)
+        replyMsg = text_Message(number, body)
+        replyButtonData = listReply_Message(number, mainOptions, body2, footer, "sed2", messageId)
         list.append(replyMsg)
+        list.append(replyButtonData)
         
     elif "oferta educativa" in text:
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
@@ -373,87 +376,6 @@ def administrar_chatbot(text, number, messageId, name):
 
 
 
-"""
-
-def administrar_chatbot(text,number, messageId, name):
-    text = text.lower() #mensaje que envio el usuario
-    list = []
-    print("mensaje del usuario: ",text)
-
-    markRead = markRead_Message(messageId)
-    list.append(markRead)
-    time.sleep(2)
-
-    if "hola" in text:
-        body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En que te podemos ayudar?"
-        footer = "Equipo UNSIJ"
-        options = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
-
-        replyButtonData = listReply_Message(number, options, body, footer, "sed1",messageId)
-        replyReaction = replyReaction_Message(number, messageId, "🫡")
-        list.append(replyReaction)
-        list.append(replyButtonData)
-    elif "¿Qué es la UNSIJ?" in text:
-        body = "Tenemos varias áreas de consulta para elegir. ¿Cuál de estos servicios te gustaría explorar?"
-        footer = "Equipo UNSIJ"
-        options = ["Analítica Avanzada", "Migración Cloud", "Inteligencia de Negocio"]
-
-        listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
-        sticker = sticker_Message(number, get_media_id("perro_traje", "sticker"))
-
-        list.append(listReplyData)
-        list.append(sticker)
-    elif "inteligencia de negocio" in text:
-        body = "Buenísima elección. ¿Te gustaría que te enviara un documento PDF con una introducción a nuestros métodos de Inteligencia de Negocio?"
-        footer = "Equipo UNSIJ"
-        options = ["✅ Sí, envía el PDF.", "⛔ No, gracias"]
-
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed3",messageId)
-        list.append(replyButtonData)
-    elif "sí, envía el pdf" in text:
-        sticker = sticker_Message(number, get_media_id("pelfet", "sticker"))
-        textMessage = text_Message(number,"Genial, por favor espera un momento.")
-
-        enviar_Mensaje_whatsapp(sticker)
-        enviar_Mensaje_whatsapp(textMessage)
-        time.sleep(3)
-
-        document = document_Message(number, sett.document_url, "Listo 👍🏻", "Inteligencia de Negocio.pdf")
-        enviar_Mensaje_whatsapp(document)
-        time.sleep(3)
-
-        body = "¿Te gustaría programar una reunión con uno de nuestros especialistas para discutir estos servicios más a fondo?"
-        footer = "Equipo UNSIJ"
-        options = ["✅ Sí, agenda reunión", "No, gracias."]
-
-        replyButtonData = buttonReply_Message(number, options, body, footer, "sed4",messageId)
-        list.append(replyButtonData)
-    elif "sí, agenda reunión" in text :
-        body = "Estupendo. Por favor, selecciona una fecha y hora para la reunión:"
-        footer = "Equipo UNSIJ"
-        options = ["📅 10: mañana 10:00 AM", "📅 7 de junio, 2:00 PM", "📅 8 de junio, 4:00 PM"]
-
-        listReply = listReply_Message(number, options, body, footer, "sed5",messageId)
-        list.append(listReply)
-    elif "7 de junio, 2:00 pm" in text:
-        body = "Excelente, has seleccionado la reunión para el 7 de junio a las 2:00 PM. Te enviaré un recordatorio un día antes. ¿Necesitas ayuda con algo más hoy?"
-        footer = "Equipo UNSIJ"
-        options = ["✅ Sí, por favor", "❌ No, gracias."]
-
-
-        buttonReply = buttonReply_Message(number, options, body, footer, "sed6",messageId)
-        list.append(buttonReply)
-    elif "no, gracias." in text:
-        textMessage = text_Message(number,"Perfecto! No dudes en contactarnos si tienes más preguntas. Recuerda que también ofrecemos material gratuito para la comunidad. ¡Hasta luego! 😊")
-        list.append(textMessage)
-    else :
-        data = text_Message(number,"Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
-        list.append(data)
-
-    for item in list:
-        enviar_Mensaje_whatsapp(item)
-
-"""
 
 #al parecer para mexico, whatsapp agrega 521 como prefijo en lugar de 52,
 # este codigo soluciona ese inconveniente.
