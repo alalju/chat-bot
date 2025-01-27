@@ -3,6 +3,14 @@ import sett
 import json
 import time
 
+import re
+
+def normalizar_texto(texto):
+    # Eliminar emojis y caracteres especiales
+    texto = re.sub(r'[^\w\s]', '', texto)
+    return texto.strip().lower()
+
+
 def obtener_Mensaje_whatsapp(message):
     if 'type' not in message :
         text = 'mensaje no reconocido'
@@ -314,11 +322,9 @@ def administrar_chatbot(text, number, messageId, name):
         list.append(replyButtonData)
 
     elif "fechas" in text:
-        body = "Estas son las fechas importantes:\n"
-        for fecha in fechas.keys():
-            body += f"- {fecha.capitalize()}\n"
+        body = "Estas son las fechas importantes relacionadas con el proceso de inscripción. ¿Qué fecha te interesa?"
         footer = "Equipo UNSIJ"
-        options = list(fechas.keys())
+        options = list(fechas.keys())  # Convertir las fechas en una lista de opciones para elegir
 
         replyButtonData = listReply_Message(number, options, body, footer, "sed4", messageId)
         list.append(replyButtonData)
