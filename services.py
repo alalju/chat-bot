@@ -236,32 +236,31 @@ def markRead_Message(messageId):
   
   
 carreras = {
-      "Ing Forestal": {
-          "misión": "Formar profesionistas para el manejo sustentable de ecosistemas forestales.",
-          "visión": "Ser líder en ciencia forestal y manejo sustentable.",
-          "objetivo": "Capacitar para el manejo de ecosistemas forestales y el desarrollo sustentable."
-      },
-      "Ambientales": {
-          "misión": "Formar profesionales capaces de resolver problemas socioambientales y promover el desarrollo sostenible.",
-          "visión": "Formar profesionales en Ciencias Ambientales con enfoque integral y ético.",
-          "objetivo": "Formar profesionales que generen soluciones sostenibles para los recursos naturales."
-      },
-      "Software": {
-          "misión": "Formar profesionistas competitivos en desarrollo de software.",
-          "visión": "Ser reconocido por su excelencia académica, innovación y compromiso ético.",
-          "objetivo": "Formar ingenieros en software con habilidades analíticas y creativas."
-      },
-      "Biología": {
-          "misión": "Formar profesionales en biología enfocados en la conservación y uso sostenible de recursos.",
-          "visión": "Ser reconocido por su excelencia académica y responsabilidad ambiental.",
-          "objetivo": "Formar profesionales capaces de generar conocimiento y soluciones en conservación de recursos."
-      },
-      "Turismo": {
-          "misión": "Formar profesionales para el desarrollo turístico sostenible con compromiso social.",
-          "visión": "Ser referente en excelencia académica y gestión responsable del turismo.",
-          "objetivo": "Formar profesionales con conocimientos y valores aplicables en turismo."
-      }
-
+    "Ing Forestal": {
+        "misión": "Formar profesionistas con conocimientos técnicos y científicos que contribuyan al manejo sustentable de los ecosistemas forestales en beneficio de la sociedad, mediante una educación de calidad con base en principios éticos.",
+        "visión": "Consolidarse como un programa educativo líder a nivel nacional en la enseñanza de la ciencia forestal y en la formación de profesionales en el manejo sustentable de los ecosistemas forestales.",
+        "objetivo": "Formar profesionistas con conocimientos, habilidades, valores y aptitudes capaces de manejar los ecosistemas forestales y coadyuvar al desarrollo sustentable del sector forestal."
+    },
+    "Ambientales": {
+        "misión": "Ser una licenciatura de excelencia en el ámbito local y nacional, a partir de un plan de estudios integral e intercultural de acuerdo a las necesidades actuales integrando contenidos éticos, democráticos y humanísticos. Contando con una planta académica de calidad, que permita la formación de estudiantes aptos para favorecer el desarrollo sostenible en sus entornos de vida y de influencia, a través de líneas de investigación que aborden los problemas socioambientales y fomenten el Desarrollo Comunitario.",
+        "visión": "Formar profesionales en el área de Ciencias Ambientales, a través de los procesos integrales desarrollados en el currículo que se fundamenta en los ejes de docencia, investigación, promoción al desarrollo y difusión de la cultura, con un enfoque intercultural; promoviendo la adquisición de conocimientos, actitudes, habilidades y destrezas con un alto nivel de responsabilidad y de excelencia, que permita a los egresados trabajar en equipos transdisciplinarios y multidisciplinarios, en un contexto ético, democrático y humanista para la prevención, análisis, evaluación e implementación de soluciones creativas e innovadoras a los problemas socioambientales, con el propósito de lograr el desarrollo sostenible local y nacional.",
+        "objetivo": "Formar profesionales con una visión integral en las Ciencias Ambientales, que adquieran los conocimientos en diversas disciplinas científicas, sociales, humanísticas y de gestión, que les permita abordar de manera holística la problemática ambiental, y sean capaces de generar soluciones alternativas, propuestas de manejo y uso sostenible de los recursos naturales."
+    },
+    "Software": {
+        "misión": "Formar profesionistas altamente competitivos .",
+        "visión": "Consolidarse como un programa educativo de vanguardia reconocido por el excelente nivel académico de sus alumnos, egresados y cuerpo docente, con capacidad de innovación, compromiso ético y social, liderazgo transformador y el manejo responsable de la información; demostrando ser un programa generador de profesionales comprometidos con las necesidades de su entorno y capaces de mejorar la situación económica, social y tecnológica de la región, sin descuidar el ambiente y la cultura, ayudando a los egresados a integrarse en diferentes ámbitos del campo laboral.",
+        "objetivo": "Formar ingenieros en desarrollo de software y sistemas inteligentes, líderes, analíticos, críticos, creativos y emprendedores, con una sólida preparación científica, tecnológica y humanista, con la capacidad y habilidad para analizar, desarrollar e implementar sistemas, colaborando activamente dando respuesta a las problemáticas y necesidades que se detecten en materia de software, actuando como agentes de cambio en el desarrollo de la región, del estado y del país."
+    },
+    "Biolígia": {
+        "misión": "Formar de manera integral profesionales bajo estándares de excelencia en el campo de la biología, altamente capacitados para liderar la generación de conocimiento a través del análisis, comprensión y argumentación orientados a la utilización y conservación de los recursos naturales. Fomentar la responsabilidad socio ambiental, la promoción de valores, innovación social, así como, la equidad social y de género y el respeto desde la interculturalidad para contribuir de manera significativa al desarrollo sustentable de la región, el estado y el país.",
+        "visión": "Posicionarse como un programa educativo reconocido por su excelencia académica y la formación del pensamiento crítico en sus estudiantes y graduados. Este reconocimiento se respalda en el destacado desempeño profesional de los egresados, resultado de la promoción de la interculturalidad, el respeto y cuidado al medio ambiente, así como el uso responsable de tecnologías asociadas con las líneas de generación y aplicación del conocimiento en los ámbitos científico, tecnológico y social, orientadas al manejo sustentable de los recursos naturales.",
+        "objetivo": "La Licenciatura en Biología tiene como objetivo fundamental formar profesionistas altamente calificados en el conocimiento de los seres vivos y su entorno, con una base científica y una perspectiva interdisciplinar, capaces de generar nuevos conocimientos a través de la investigación y proponer soluciones a las problemáticas relacionadas con la conservación, preservación, restauración y la gestión de los recursos naturales a nivel local, regional y nacional."
+    },
+    "Turismo": {
+        "misión": "Consolidar profesionales de manera integral capaces de incidir en el desarrollo turístico sostenible de la región, del estado y del país con una perspectiva intercultural y con un alto compromiso social.",
+        "visión": "Ser referente en la excelencia académica, la innovación en la enseñanza y el compromiso con la gestión responsable del turismo.",
+        "objetivo": "Formar profesionales que adquieran conocimientos, habilidades, actitudes y valores que serán promovidos y ejecutados en las organizaciones turísticas."
+    }
 }
 
 
@@ -318,8 +317,8 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
 
-    elif carrera_seleccionada:  
-        print(carrera_seleccionada)  
+    elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
+        print(carrera_seleccionada)
         print("misión" in text)
         if "misión" in text:
             body = carreras[carrera_seleccionada]["misión"]
@@ -329,10 +328,9 @@ def administrar_chatbot(text, number, messageId, name):
             body = carreras[carrera_seleccionada]["objetivo"]
 
         footer = "Equipo UNSIJ"
-        options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]
+        options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]  # Asegúrate de definir las opciones aquí
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
-
         
     elif "fechas" in text:
         body = "Selecciona un evento para ver las fechas:"
