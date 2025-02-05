@@ -1,4 +1,4 @@
-token = 'Chabot UNSIJ'
+token = 'AdairApp'
 
 whatsapp_token = 'EAAPGfZBZCr4lcBOz1GZBCWRuCYuyBqrouMcx7j58fICqqIQBOnMMg5AV8V9WLGbLkZAvgnUTxJ61DvOTICUUEvtPITOhn2GAlvedR5MWVonMHZBoyBKAcpdyPhkW6wlZA4pEMWyJbHwVqRdOWZBcOBiJW7fTiZAqH7vBt8mIPzQHgzZA6bxnbVzq5BMMHD79KSvh0MQZDZD'
 
