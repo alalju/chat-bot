@@ -2,7 +2,7 @@ token = 'AdairApp'
 
 whatsapp_token = 'EAAPGfZBZCr4lcBOz1GZBCWRuCYuyBqrouMcx7j58fICqqIQBOnMMg5AV8V9WLGbLkZAvgnUTxJ61DvOTICUUEvtPITOhn2GAlvedR5MWVonMHZBoyBKAcpdyPhkW6wlZA4pEMWyJbHwVqRdOWZBcOBiJW7fTiZAqH7vBt8mIPzQHgzZA6bxnbVzq5BMMHD79KSvh0MQZDZD'
 
-whatsapp_url = 'https://graph.facebook.com/v21.0/579366638590445/messages'
+whatsapp_url = 'https://graph.facebook.com/v21.0/492826513925103/messages'
 
 stickers = {
     "poyo_feliz": 984778742532668,
