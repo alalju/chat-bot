@@ -310,7 +310,22 @@ def administrar_chatbot(text, number, messageId, name):
         options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
+        
+    elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
+        print(carrera_seleccionada)
+        print("misión" in text)
+        if "misión" in text:
+            body = carreras[carrera_seleccionada]["misión"]
+        elif "visión" in text:
+            body = carreras[carrera_seleccionada]["visión"]
+        elif "objetivo" in text:
+            body = carreras[carrera_seleccionada]["objetivo"]
 
+        footer = "Equipo UNSIJ"
+        options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]  # Asegúrate de definir las opciones aquí
+        replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
+        list.append(replyButtonData)
+        
     elif carrera_seleccionada and text in ["misión", "visión", "objetivo"]:
         body = carreras[carrera_seleccionada].get(text, "No se encontró información sobre este tema.")
         footer = "Equipo UNSIJ"
