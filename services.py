@@ -281,7 +281,7 @@ def administrar_chatbot(text, number, messageId, name):
     list.append(markRead)
     time.sleep(2)
 
-    if text in ["hola", "buenos días", "buenas tardes"]:
+    if text in ["hola", "buenos días", "buenas tardes", "Volver al men  principal"]:
         body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
         footer = "Equipo UNSIJ"
         replyButtonData = listReply_Message(number, mainOptions, body, footer, "sed1", messageId)
@@ -322,7 +322,7 @@ def administrar_chatbot(text, number, messageId, name):
             body = carreras[carrera_seleccionada]["visión"]
         elif "objetivo" in text:
             body = carreras[carrera_seleccionada]["objetivo"]
-
+        carrera_seleccionada = None
         footer = "Equipo UNSIJ"
         options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]  # Asegúrate de definir las opciones aquí
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
