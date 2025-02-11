@@ -303,13 +303,15 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
 
-    elif text in [carrera.lower() for carrera in carreras.keys()]:
-        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() == text)
+    elif any(carrera.lower() in text for carrera in carreras.keys()):
+        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() in text)
         body = f"Has seleccionado la carrera de {carrera_seleccionada}. ¿Qué te gustaría conocer?"
         footer = "Equipo UNSIJ"
         options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]
+
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
+        
         
     elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
         print(carrera_seleccionada)
@@ -323,13 +325,6 @@ def administrar_chatbot(text, number, messageId, name):
 
         footer = "Equipo UNSIJ"
         options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]  # Asegúrate de definir las opciones aquí
-        replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
-        list.append(replyButtonData)
-        
-    elif carrera_seleccionada and text in ["misión", "visión", "objetivo"]:
-        body = carreras[carrera_seleccionada].get(text, "No se encontró información sobre este tema.")
-        footer = "Equipo UNSIJ"
-        options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
 
