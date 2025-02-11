@@ -271,7 +271,7 @@ def administrar_chatbot(text, number, messageId, name):
     global carrera_seleccionada
     global fecha_seleccionada
 
-    mainOptions = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
+    mainOptions = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "📅 Fechas"]
     text = text.lower().strip()
     list = []
     
