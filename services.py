@@ -364,7 +364,7 @@ def administrar_chatbot(text, number, messageId, name):
         list.append(replyButtonData)
 
     else:
-        body = "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?"
+        body = "Lo siento, no entendí lo que dijiste. Prueba con 'hola' para comenzar a chatear 🤑"
         list.append(text_Message(number, body))
 
     for item in list:
