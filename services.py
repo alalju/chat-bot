@@ -242,139 +242,123 @@ carreras = {
         "objetivo": "Formar profesionistas con conocimientos, habilidades, valores y aptitudes capaces de manejar los ecosistemas forestales y coadyuvar al desarrollo sustentable del sector forestal."
     },
     "Ambientales": {
-        "misión": "Ser una licenciatura de excelencia en el ámbito local y nacional, a partir de un plan de estudios integral e intercultural de acuerdo a las necesidades actuales integrando contenidos éticos, democráticos y humanísticos. Contando con una planta académica de calidad, que permita la formación de estudiantes aptos para favorecer el desarrollo sostenible en sus entornos de vida y de influencia, a través de líneas de investigación que aborden los problemas socioambientales y fomenten el Desarrollo Comunitario.",
-        "visión": "Formar profesionales en el área de Ciencias Ambientales, a través de los procesos integrales desarrollados en el currículo que se fundamenta en los ejes de docencia, investigación, promoción al desarrollo y difusión de la cultura, con un enfoque intercultural; promoviendo la adquisición de conocimientos, actitudes, habilidades y destrezas con un alto nivel de responsabilidad y de excelencia, que permita a los egresados trabajar en equipos transdisciplinarios y multidisciplinarios, en un contexto ético, democrático y humanista para la prevención, análisis, evaluación e implementación de soluciones creativas e innovadoras a los problemas socioambientales, con el propósito de lograr el desarrollo sostenible local y nacional.",
-        "objetivo": "Formar profesionales con una visión integral en las Ciencias Ambientales, que adquieran los conocimientos en diversas disciplinas científicas, sociales, humanísticas y de gestión, que les permita abordar de manera holística la problemática ambiental, y sean capaces de generar soluciones alternativas, propuestas de manejo y uso sostenible de los recursos naturales."
+        "misión": "Ser una licenciatura de excelencia en el ámbito local y nacional, a partir de un plan de estudios integral e intercultural...",
+        "visión": "Formar profesionales en el área de Ciencias Ambientales...",
+        "objetivo": "Formar profesionales con una visión integral en las Ciencias Ambientales..."
     },
     "Software": {
-        "misión": "Formar profesionistas altamente competitivos .",
-        "visión": "Consolidarse como un programa educativo de vanguardia reconocido por el excelente nivel académico de sus alumnos, egresados y cuerpo docente, con capacidad de innovación, compromiso ético y social, liderazgo transformador y el manejo responsable de la información; demostrando ser un programa generador de profesionales comprometidos con las necesidades de su entorno y capaces de mejorar la situación económica, social y tecnológica de la región, sin descuidar el ambiente y la cultura, ayudando a los egresados a integrarse en diferentes ámbitos del campo laboral.",
-        "objetivo": "Formar ingenieros en desarrollo de software y sistemas inteligentes, líderes, analíticos, críticos, creativos y emprendedores, con una sólida preparación científica, tecnológica y humanista, con la capacidad y habilidad para analizar, desarrollar e implementar sistemas, colaborando activamente dando respuesta a las problemáticas y necesidades que se detecten en materia de software, actuando como agentes de cambio en el desarrollo de la región, del estado y del país."
+        "misión": "Formar profesionistas altamente competitivos.",
+        "visión": "Consolidarse como un programa educativo de vanguardia...",
+        "objetivo": "Formar ingenieros en desarrollo de software y sistemas inteligentes..."
     },
-    "Biolígia": {
-        "misión": "Formar de manera integral profesionales bajo estándares de excelencia en el campo de la biología, altamente capacitados para liderar la generación de conocimiento a través del análisis, comprensión y argumentación orientados a la utilización y conservación de los recursos naturales. Fomentar la responsabilidad socio ambiental, la promoción de valores, innovación social, así como, la equidad social y de género y el respeto desde la interculturalidad para contribuir de manera significativa al desarrollo sustentable de la región, el estado y el país.",
-        "visión": "Posicionarse como un programa educativo reconocido por su excelencia académica y la formación del pensamiento crítico en sus estudiantes y graduados. Este reconocimiento se respalda en el destacado desempeño profesional de los egresados, resultado de la promoción de la interculturalidad, el respeto y cuidado al medio ambiente, así como el uso responsable de tecnologías asociadas con las líneas de generación y aplicación del conocimiento en los ámbitos científico, tecnológico y social, orientadas al manejo sustentable de los recursos naturales.",
-        "objetivo": "La Licenciatura en Biología tiene como objetivo fundamental formar profesionistas altamente calificados en el conocimiento de los seres vivos y su entorno, con una base científica y una perspectiva interdisciplinar, capaces de generar nuevos conocimientos a través de la investigación y proponer soluciones a las problemáticas relacionadas con la conservación, preservación, restauración y la gestión de los recursos naturales a nivel local, regional y nacional."
+    "Biología": {  # Corregido de "Biolígia"
+        "misión": "Formar de manera integral profesionales bajo estándares de excelencia en el campo de la biología...",
+        "visión": "Posicionarse como un programa educativo reconocido por su excelencia académica...",
+        "objetivo": "La Licenciatura en Biología tiene como objetivo fundamental formar profesionistas altamente calificados..."
     },
     "Turismo": {
-        "misión": "Consolidar profesionales de manera integral capaces de incidir en el desarrollo turístico sostenible de la región, del estado y del país con una perspectiva intercultural y con un alto compromiso social.",
-        "visión": "Ser referente en la excelencia académica, la innovación en la enseñanza y el compromiso con la gestión responsable del turismo.",
-        "objetivo": "Formar profesionales que adquieran conocimientos, habilidades, actitudes y valores que serán promovidos y ejecutados en las organizaciones turísticas."
+        "misión": "Consolidar profesionales de manera integral capaces de incidir en el desarrollo turístico sostenible...",
+        "visión": "Ser referente en la excelencia académica, la innovación en la enseñanza...",
+        "objetivo": "Formar profesionales que adquieran conocimientos, habilidades, actitudes y valores..."
     }
 }
 
-
-
-# Variable global para rastrear la carrera seleccionada
+# Variables globales
 carrera_seleccionada = None
 fecha_seleccionada = None
 
 def administrar_chatbot(text, number, messageId, name):
-    global carrera_seleccionada  # Usamos la variable global para almacenar la carrera seleccionada
-    global fecha_seleccionada  # Usamos la variable global para almacenar la fecha seleccionada
-    mainOptions = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
+    global carrera_seleccionada
+    global fecha_seleccionada
 
-    text = text.lower()  # Mensaje que envió el usuario
+    mainOptions = ["🤔 ¿Qué es la UNSIJ?", "📋 Oferta educativa", "✅ Misión y Visión", "📅 Fechas"]
+    text = text.lower().strip()
     list = []
-    print("mensaje del usuario: ", text)
+    
+    print("Mensaje del usuario:", text)
 
     markRead = markRead_Message(messageId)
     list.append(markRead)
     time.sleep(2)
 
-    if "hola" in text:
+    if text in ["hola", "buenos días", "buenas tardes"]:
         body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
         footer = "Equipo UNSIJ"
-
         replyButtonData = listReply_Message(number, mainOptions, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
-        list.append(replyReaction)
-        list.append(replyButtonData)
-        
+        list.extend([replyReaction, replyButtonData])
+
     elif "¿qué es la unsij?" in text:
-        body = "La UNSIJ es un instrumento de desarrollo para la región de la Sierra Norte, como Centro de Educación Superior e Investigación Científica..."
+        body = "La UNSIJ es un instrumento de desarrollo para la región de la Sierra Norte..."
         body2 = "¿En qué más te podemos ayudar?"
         footer = "Equipo UNSIJ"
         replyMsg = text_Message(number, body)
         replyButtonData = listReply_Message(number, mainOptions, body2, footer, "sed2", messageId)
-        list.append(replyMsg)
-        list.append(replyButtonData)
-        
+        list.extend([replyMsg, replyButtonData])
+
     elif "oferta educativa" in text:
         body = "Estas son las carreras disponibles en la UNSIJ. ¿Cuál te interesa?"
         footer = "Equipo UNSIJ"
-        options = ["✅ Ing Forestal", "✅ Ambientales", "✅ Software", "✅ Biolígia", "✅ Turismo"]
-
+        options = [f"✅ {carrera}" for carrera in carreras.keys()]
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
-        
-    elif any(carrera.lower() in text for carrera in carreras.keys()):
-        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() in text)
+
+    elif text in [carrera.lower() for carrera in carreras.keys()]:
+        carrera_seleccionada = next(carrera for carrera in carreras.keys() if carrera.lower() == text)
         body = f"Has seleccionado la carrera de {carrera_seleccionada}. ¿Qué te gustaría conocer?"
         footer = "Equipo UNSIJ"
         options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]
-
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
 
-    elif carrera_seleccionada:  # Si hay una carrera seleccionada y el usuario pregunta por misión, visión o plan de estudio
-        print(carrera_seleccionada)
-        print("misión" in text)
-        if "misión" in text:
-            body = carreras[carrera_seleccionada]["misión"]
-        elif "visión" in text:
-            body = carreras[carrera_seleccionada]["visión"]
-        elif "objetivo" in text:
-            body = carreras[carrera_seleccionada]["objetivo"]
-
+    elif carrera_seleccionada and text in ["misión", "visión", "objetivo"]:
+        body = carreras[carrera_seleccionada].get(text, "No se encontró información sobre este tema.")
         footer = "Equipo UNSIJ"
-        options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]  # Asegúrate de definir las opciones aquí
+        options = ["✅ Misión", "✅ Visión", "📋 Objetivo"]
         replyButtonData = listReply_Message(number, options, body, footer, "sed3", messageId)
         list.append(replyButtonData)
-        
+
     elif "fechas" in text:
         body = "Selecciona un evento para ver las fechas:"
         footer = "Equipo UNSIJ"
         options = ["🗓️ Entrega de fichas", "🗓️ Examen de selección", "🗓️ Inscripciones al CP", "🗓️ Curso propedéutico"]
-
         replyButtonData = listReply_Message(number, options, body, footer, "sed2", messageId)
         list.append(replyButtonData)
+
     elif "entrega de fichas" in text:
         body = "La entrega de fichas será del 16 de febrero al 26 de junio de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
-
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_entrega_fichas", messageId)
         list.append(replyButtonData)
+
     elif "examen de selección" in text:
-        body = "El examen de selección será del 25 de mayo y 01 de julio de 2024"
+        body = "El examen de selección será el 25 de mayo y 01 de julio de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
-
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_examen_seleccion", messageId)
         list.append(replyButtonData)
+
     elif "inscripciones al cp" in text:
         body = "Las inscripciones al curso propedéutico son del 15 al 26 de julio de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
-
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_inscripciones_cp", messageId)
         list.append(replyButtonData)
-    elif "curso propedeutico" in text:
+
+    elif "curso propedéutico" in text:
         body = "El curso propedéutico será del 29 de julio al 20 de septiembre de 2024"
         footer = "Equipo UNSIJ"
         options = ["Volver al menú de fechas", "Volver al menú principal"]
-
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_curso_propedeutico", messageId)
         list.append(replyButtonData)
 
     else:
-        data = text_Message(number, "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?")
-        list.append(data)
+        body = "Lo siento, no entendí lo que dijiste. ¿Quieres que te ayude con alguna de estas opciones?"
+        list.append(text_Message(number, body))
 
     for item in list:
         enviar_Mensaje_whatsapp(item)
-
 
 
 
