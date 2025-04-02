@@ -181,6 +181,36 @@ def sticker_Message(number, sticker_id):
         }
     )
     return data
+  
+def audio_Message(number, url):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "audio",
+            "audio": {
+                "link": url  # URL del audio
+            }
+        }
+    )
+    return data
+
+
+def image_Message(number, url, caption="Aquí tienes una imagen"):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "image",
+            "image": {
+                "link": url,  # URL de la imagen
+                "caption": caption
+            }
+        }
+    )
+    return data
 
 def get_media_id(media_name , media_type):
     media_id = ""
@@ -362,6 +392,15 @@ def administrar_chatbot(text, number, messageId, name):
         options = ["Volver al menú de fechas", "Volver al menú principal"]
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_curso_propedeutico", messageId)
         list.append(replyButtonData)
+    elif "escuchar audio" in text:
+        audio_url = "https://example.com/audio.mp3"  # Reemplaza con la URL de tu audio
+        audioMsg = audio_Message(number, audio_url)
+        list.append(audioMsg)
+
+    elif "ver imagen" in text:
+        image_url = "https://example.com/imagen.jpg"  # Reemplaza con la URL de tu imagen
+        imageMsg = image_Message(number, image_url, "Aquí tienes una imagen")
+        list.append(imageMsg)
 
     else:
         body = "Lo siento, no entendí lo que dijiste. Prueba con 'hola' para comenzar a chatear 🤑"
