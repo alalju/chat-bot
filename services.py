@@ -393,7 +393,7 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_curso_propedeutico", messageId)
         list.append(replyButtonData)
     elif "escuchar audio" in text:
-        audio_url = "https://youtu.be/a1Femq4NPxs?si=sBZUqvpmDi0w5Dcy"  # Reemplaza con la URL de tu audio
+        audio_url = "https://open.spotify.com/track/2lTm559tuIvatlT1u0JYG2?si=lpUJdQWVSSKr43FPO6mDnA%0A"  # Reemplaza con la URL de tu audio
         audioMsg = audio_Message(number, audio_url)
         list.append(audioMsg)
 
