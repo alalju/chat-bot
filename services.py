@@ -393,7 +393,7 @@ def administrar_chatbot(text, number, messageId, name):
         replyButtonData = listReply_Message(number, options, body, footer, "fecha_curso_propedeutico", messageId)
         list.append(replyButtonData)
     elif "escuchar audio" in text:
-        audio_url = "https://soundcloud.com/musicatv_1/adan-zapata-puro-malandro-ft-diablo?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"  # Reemplaza con la URL de tu audio
+        audio_url = "https://cdn.freesound.org/previews/794/794277_5828667-lq.mp3"  # Reemplaza con la URL de tu audio
         audioMsg = audio_Message(number, audio_url)
         list.append(audioMsg)
 
