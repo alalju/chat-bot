@@ -312,7 +312,7 @@ def administrar_chatbot(text, number, messageId, name):
     time.sleep(2)
 
     if text in ["hola", "buenos días", "buenas tardes", "volver al menú principal"]:
-        body = "¡Hola! 🤖 Bienvenido al chatbot de la Universidad de la Sierra Juárez. ¿En qué te podemos ayudar?"
+        body = "¡Hola! 🤖 Bienvenido al chatbot de prueba. ¿En qué te podemos ayudar?"
         footer = "Equipo UNSIJ"
         replyButtonData = listReply_Message(number, mainOptions, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
@@ -398,8 +398,8 @@ def administrar_chatbot(text, number, messageId, name):
         list.append(audioMsg)
 
     elif "ver imagen" in text:
-        image_url = "https://cdn.glitch.global/2f982c3f-3080-4974-a218-6a1285c0b62c/c3194dd8-bab5-48c8-8f40-6510790df95b.image.png?v=1743619814387"  # Reemplaza con la URL de tu imagen
-        imageMsg = image_Message(number, image_url, "Aquí tienes una imagen")
+        image_url = "https://www.eluniversal.com.mx/resizer/v2/XSFDXWPLWFEE3IEWVHN2NP3K7U.jpg?auth=28a92b7a1d88ddd9929ec22c7a9ddab5912e7f869bd3723e2ed802c3825e2c5c&smart=true&width=1100&height=666"  # Reemplaza con la URL de tu imagen
+        imageMsg = image_Message(number, image_url, "Aquí tienes tu imagen")
         list.append(imageMsg)
 
     else:
