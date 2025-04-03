@@ -399,7 +399,7 @@ def administrar_chatbot(text, number, messageId, name):
 
     elif "ver imagen" in text:
         image_url = "https://www.eluniversal.com.mx/resizer/v2/XSFDXWPLWFEE3IEWVHN2NP3K7U.jpg?auth=28a92b7a1d88ddd9929ec22c7a9ddab5912e7f869bd3723e2ed802c3825e2c5c&smart=true&width=1100&height=666"  # Reemplaza con la URL de tu imagen
-        imageMsg = image_Message(number, image_url, "Aquí tienes una imagen")
+        imageMsg = image_Message(number, image_url, "Aquí tienes tu imagen")
         list.append(imageMsg)
 
     else:
