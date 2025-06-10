@@ -312,7 +312,7 @@ def administrar_chatbot(text, number, messageId, name):
     time.sleep(2)
 
     if text in ["hola", "buenos días", "buenas tardes", "volver al menú principal"]:
-        body = "¡Hola! 🤖 Bienvenido a este taller"
+        body = "¡Hola! 🤖 Bienvenido a este taller el dia de hoy 10 de julio"
         footer = "Equipo UNSIJ"
         replyButtonData = listReply_Message(number, mainOptions, body, footer, "sed1", messageId)
         replyReaction = replyReaction_Message(number, messageId, "🫡")
