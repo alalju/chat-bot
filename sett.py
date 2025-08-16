@@ -1,9 +1,15 @@
-token = 'appPrueba'
+import os
 
-whatsapp_token = 'EAGM5oBZCffdoBO7EQqKkzGOAQedGHZB7nWkhZBTzSxXWFlkh425n6LRSlvB11a5Wmn8e5yPZA9bNDUgLIgjibV9azlZA0YINPGZBUZAbwOHYNHkhWmMdMYBVksAtpPYqDhU3FOmu4Vx458keaL3FSZBLZCH4boTM3PJPxG736BSHCp97eaFlZCM8oUkNzPXlj49PM6qQZDZD'
+# Token para verificar webhook de WhatsApp
+token = os.getenv("MY_APP_TOKEN", "appPrueba")  # valor por defecto solo para pruebas locales
 
-whatsapp_url = 'https://graph.facebook.com/v21.0/492826513925103/messages'
+# Token de la API de WhatsApp
+whatsapp_token = os.getenv("WHATSAPP_TOKEN")
 
+# URL de la API de WhatsApp
+whatsapp_url = os.getenv("WHATSAPP_URL", "https://graph.facebook.com/v21.0/492826513925103/messages")
+
+# Stickers del chatbot
 stickers = {
     "poyo_feliz": 984778742532668,
     "perro_traje": 1009219236749949,
@@ -20,4 +26,5 @@ stickers = {
     "gato_cansado": 1021308728970759
 }
 
+# Documento de ejemplo
 document_url = "https://www.africau.edu/images/default/sample.pdf"
