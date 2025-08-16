@@ -26,6 +26,7 @@ def verificar_token():
 def recibir_mensajes():
     try:
         body = request.get_json()
+        print("Mensaje recibido:", body) 
         entry = body['entry'][0]
         changes = entry['changes'][0]
         value = changes['value']
