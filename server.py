@@ -31,6 +31,7 @@ def verificar_token():
 
 @app.route('/webhook', methods=['POST'])
 def recibir_mensajes():
+    """
     try:
         body = request.get_json()
         logging.info(f"Mensaje recibido: {body}")
@@ -55,6 +56,14 @@ def recibir_mensajes():
         logging.error(f"Error al procesar mensaje: {e}")
         # Responder 500 para que WhatsApp sepa que hubo error
         return 'no enviado', 500
+        """
+    try:
+        body = request.get_json()
+        logging.info(f"Mensaje recibido: {body}")
+        return 'ok', 200
+    except Exception as e:
+        logging.error(f"Error al procesar mensaje: {e}")
+        return 'error', 500
 
 # Nota: app.run() se elimina, Gunicorn lo manejará
 
