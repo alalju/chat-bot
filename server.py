@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask, request
+from flask import Flask, render_template
 import sett
 import services
 
