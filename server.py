@@ -9,11 +9,12 @@ app = Flask(__name__)
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
 
+# --- Ruta de prueba ---
 @app.route('/bienvenido', methods=['GET'])
 def bienvenido():
     return 'Hola mundo bigdateros, desde Flask'
 
-# Verificación de webhook
+# --- Verificación de webhook ---
 @app.route('/webhook', methods=['GET'])
 def verificar_token():
     try:
@@ -30,23 +31,32 @@ def verificar_token():
         logging.error(f"Error al verificar webhook: {e}")
         return str(e), 403
 
-# Recepción de mensajes de WhatsApp
+# --- Recepción de mensajes de WhatsApp ---
 @app.route('/webhook', methods=['POST'])
 def recibir_mensajes():
     try:
         body = request.get_json()
+
+        # Extraer mensaje
         entry = body['entry'][0]
         changes = entry['changes'][0]
         value = changes['value']
-        message = value['messages'][0]
+        message = value.get('messages', [])[0]  # Por si no hay mensaje
+        if not message:
+            return jsonify({"status": "no hay mensajes"}), 200
+
         number = services.replace_start(message['from'])
         messageId = message['id']
-        contacts = value['contacts'][0]
-        name = contacts['profile']['name']
+
+        contacts = value.get('contacts', [{}])[0]
+        name = contacts.get('profile', {}).get('name', 'Usuario')
+
         text = services.obtener_Mensaje_whatsapp(message)
 
-        services.administrar_chatbot(text, number, messageId, name)
-        logging.info(f"Mensaje recibido y enviado: {text} de {number}")
+        # Procesar con chatbot
+        services.administrar_chatbot(text, number, messageId)
+
+        logging.info(f"Mensaje recibido y procesado: '{text}' de {number}")
         return jsonify({"status": "enviado"}), 200
 
     except Exception as e:
@@ -54,7 +64,6 @@ def recibir_mensajes():
         return jsonify({"status": "no enviado", "error": str(e)}), 500
 
 if __name__ == '__main__':
-    # Solo para pruebas locales
     port = int(os.environ.get('PORT', 8000))
     app.run(host='0.0.0.0', port=port, debug=True)
 
