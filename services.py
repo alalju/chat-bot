@@ -35,19 +35,24 @@ def enviar_Mensaje_whatsapp(data):
     try:
         whatsapp_token = sett.whatsapp_token
         whatsapp_url = sett.whatsapp_url
-        headers = {'Content-Type': 'application/json',
-                   'Authorization': 'Bearer ' + whatsapp_token}
-        print("se envia ", data)
-        response = requests.post(whatsapp_url, 
-                                 headers=headers, 
-                                 data=data)
-        
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {whatsapp_token}'
+        }
+
+        logging.info(f"Enviando mensaje: {data}")
+        response = requests.post(whatsapp_url, headers=headers, json=data)
+        logging.info(f"Respuesta WhatsApp: {response.status_code}, {response.text}")
+
         if response.status_code == 200:
             return 'mensaje enviado', 200
         else:
-            return 'error al enviar mensaje', response.status_code
+            return f'error al enviar mensaje: {response.text}', response.status_code
+
     except Exception as e:
-        return e,403
+        logging.error(f"Error enviando mensaje: {e}")
+        return str(e), 403
+
     
 def text_Message(number,text):
     data = json.dumps(
