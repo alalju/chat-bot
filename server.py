@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import os
 import sett
 import services
@@ -47,16 +47,15 @@ def recibir_mensajes():
 
         services.administrar_chatbot(text, number, messageId, name)
         logging.info(f"Mensaje recibido y enviado: {text} de {number}")
-        return 'enviado'
+        return jsonify({"status": "enviado"}), 200
 
     except Exception as e:
         logging.error(f"No se pudo procesar el mensaje: {e}")
-        return 'no enviado ' + str(e), 500
+        return jsonify({"status": "no enviado", "error": str(e)}), 500
 
 if __name__ == '__main__':
     # Solo para pruebas locales
     port = int(os.environ.get('PORT', 8000))
     app.run(host='0.0.0.0', port=port, debug=True)
-
 
 
