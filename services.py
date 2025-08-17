@@ -43,9 +43,9 @@ def enviar_Mensaje_whatsapp(data):
             'Authorization': f'Bearer {whatsapp_token}'
         }
 
-        logging.info(f"Enviando mensaje: {data}")
+        logger.info(f"Enviando mensaje: {data}")
         response = requests.post(whatsapp_url, headers=headers, json=data)
-        logging.info(f"Respuesta WhatsApp: {response.status_code}, {response.text}")
+        logger.info(f"Respuesta WhatsApp: {response.status_code}, {response.text}")
 
         if response.status_code == 200:
             return 'mensaje enviado', 200
@@ -53,8 +53,9 @@ def enviar_Mensaje_whatsapp(data):
             return f'error al enviar mensaje: {response.text}', response.status_code
 
     except Exception as e:
-        logging.error(f"Error enviando mensaje: {e}")
+        logger.error(f"Error enviando mensaje: {e}")
         return str(e), 403
+
 
     
 def text_Message(number,text):
