@@ -2,8 +2,11 @@ import requests
 import sett
 import json
 import time
+import logging
 
 import re
+
+logger = logging.getLogger(__name__)
 
 def normalizar_texto(texto):
     # Eliminar emojis y caracteres especiales
